@@ -53,14 +53,14 @@ const SidebarComponent = ({isNoneMobile, drawerWidth, isOpen, setIsOpen}: any) =
                         }
                     }}
                 >
-                    <Box width='100%'>
+                    <Box className={classes.navBlock}>
                         <Box>
                             <FlexBetween>
                                 <Box className={classes.brand}>
                                     <img src={Logo} alt="logo"/>
                                     <Typography
                                         variant="h1"
-                                        color={theme.palette.mode === 'dark' ? colors.white.DEFAULT : colors.black.DEFAULT}
+                                        className={classes.brandTitle}
                                     >
                                         Demo
                                     </Typography>
@@ -72,12 +72,12 @@ const SidebarComponent = ({isNoneMobile, drawerWidth, isOpen, setIsOpen}: any) =
                                 )}
                             </FlexBetween>
                         </Box>
-                        <List>
+                        <List className={classes.navList}>
                             {
                                 navMenu.map((element) => {
                                     return (
-                                        <ListItem key={element.id}>
-                                            <ListItemButton onClick={() => navigate(`${element.path}`)}>
+                                        <ListItem key={element.id} >
+                                            <ListItemButton className={classes.navItem} onClick={() => navigate(`${element.path}`)} >
                                                 <ListItemIcon>
                                                     {element.icon}
                                                 </ListItemIcon>
@@ -89,6 +89,20 @@ const SidebarComponent = ({isNoneMobile, drawerWidth, isOpen, setIsOpen}: any) =
                                     )
                                 })
                             }
+                        </List>
+                    </Box>
+                    <Box width='100%'>
+                        <List>
+                            <ListItem>
+                                <ListItemButton className={classes.navItem}>
+                                    <ListItemIcon>
+                                        <LogoutOutlined/>
+                                    </ListItemIcon>
+                                    <ListItemText>
+                                        <Typography>Logout</Typography>
+                                    </ListItemText>
+                                </ListItemButton>
+                            </ListItem>
                         </List>
                     </Box>
                 </Drawer>
