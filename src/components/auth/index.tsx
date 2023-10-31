@@ -9,6 +9,9 @@ import {useAppDispatch} from "../../utils/hook";
 import {login} from "../../store/slice/auth";
 import {AppErrors} from "../../common/errors";
 import {useForm} from "react-hook-form";
+import {LoginSchema} from "../../utils/yup";
+import {yupResolver} from "@hookform/resolvers/yup";
+
 
 const AuthRootComponent: React.FC = (): JSX.Element => {
     const [email, setEmail] = useState('');
@@ -21,11 +24,13 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
     const navigate = useNavigate()
     const {
         register,
-        formState:{
+        formState: {
             errors
         },
         handleSubmit
-    } = useForm()
+    } = useForm({
+        resolver: yupResolver(LoginSchema)
+    })
 
     console.log('errors',errors)
     const handleSubmitForm = async (data: any) => {
