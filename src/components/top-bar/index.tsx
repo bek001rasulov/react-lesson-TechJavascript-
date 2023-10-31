@@ -28,7 +28,7 @@ const TopBarComponent = ({isOpen, setIsOpen}: any) => {
                     </FlexBetween>
 
                 </Grid>
-                <Box display="flex">
+                <Box display="flex" alignItems="center">
                     <Grid className={classes.iconBlock} onClick={colorMode.toggleColorMode}>
                         <IconButton className={classes.themeIcon}>
                             {theme.palette.mode === 'dark' ? <DarkModeIcon/> : <LightModeIcon/>}

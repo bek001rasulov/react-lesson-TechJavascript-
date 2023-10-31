@@ -25,7 +25,6 @@ export const useStyles = makeStyles((theme: Theme) => {
             },
             iconBlock: {
                 paddingRight: '35px',
-                paddingTop: '10px',
                 borderRight: `1px solid ${colors.borderColor}`
             },
             themeIcon: {

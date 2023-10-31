@@ -21,6 +21,9 @@ export const useStyles = makeStyles((theme:Theme) => {
             },
             navItem: {
                 borderRadius: '4px !important',
+                '& .MuiSvgIcon-root': {
+                    color: `${colors.secondary.DEFAULT}`
+                },
                 '&:hover' : {
                     backgroundColor: '#1900D5 !important',
                     color: '#fff',
