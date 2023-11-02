@@ -9,8 +9,9 @@ import {ColorModeContext} from "../../theme";
 import {useStyles} from "./styles";
 import FlexBetween from "../flex-between";
 import {MenuOutlined} from "@mui/icons-material";
+import {ITopBarProps} from "../../common/types/top-bar";
 
-const TopBarComponent = ({isOpen, setIsOpen}: any) => {
+const TopBarComponent: React.FC<ITopBarProps> = ({isOpen, setIsOpen}: ITopBarProps): JSX.Element => {
     const theme = useTheme()
     const colorMode: any = useContext(ColorModeContext)
     const classes = useStyles()
@@ -29,8 +30,8 @@ const TopBarComponent = ({isOpen, setIsOpen}: any) => {
 
                 </Grid>
                 <Box display="flex" alignItems="center">
-                    <Grid className={classes.iconBlock} onClick={colorMode.toggleColorMode}>
-                        <IconButton className={classes.themeIcon}>
+                    <Grid className={classes.iconBlock} >
+                        <IconButton className={classes.themeIcon} onClick={colorMode.toggleColorMode}>
                             {theme.palette.mode === 'dark' ? <DarkModeIcon/> : <LightModeIcon/>}
                         </IconButton>
                         <IconButton>

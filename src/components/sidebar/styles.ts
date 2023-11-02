@@ -16,6 +16,10 @@ export const useStyles = makeStyles((theme:Theme) => {
             brandTitle: {
                 color: `${theme.palette.mode === 'dark' ? colors.white.DEFAULT : colors.black.DEFAULT}`
             },
+            navBlock: {
+                width: '100%',
+                borderBottom: `1px solid ${colors.borderColor}`
+            },
             navList: {
                 marginBottom: '55px !important',
             },
@@ -33,9 +37,13 @@ export const useStyles = makeStyles((theme:Theme) => {
                     }
                 }
             },
-            navBlock: {
-                width: '100%',
-                borderBottom: `1px solid ${colors.borderColor}`
+            active: {
+                '& .MuiSvgIcon-root':{
+                  color: `${colors.white.DEFAULT}`
+                },
+                backgroundColor: '#1900D5 !important',
+                color: '#fff !important',
+                borderRadius: '4px'
             }
         }
     )

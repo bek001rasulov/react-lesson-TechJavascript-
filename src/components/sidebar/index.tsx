@@ -21,8 +21,9 @@ import FlexBetween from "../flex-between";
 import {navMenu} from "../../common/mocks/navigate";
 import {tokens} from "../../theme";
 import Logo from "../../assets/images/sidebar/logo.svg";
+import {ISidebarProps} from "../../common/types/sidebar";
 
-const SidebarComponent = ({isNoneMobile, drawerWidth, isOpen, setIsOpen}: any) => {
+const SidebarComponent: React.FC<ISidebarProps> = ({isNoneMobile, drawerWidth, isOpen, setIsOpen}: ISidebarProps): JSX.Element => {
     const [active, setActive] = useState('')
     const classes = useStyles()
     const location = useLocation()
@@ -31,7 +32,7 @@ const SidebarComponent = ({isNoneMobile, drawerWidth, isOpen, setIsOpen}: any) =
     const colors = tokens(theme.palette.mode)
 
     useEffect(() => {
-        setActive(location.pathname.substring(1))
+        setActive(location.pathname)
     }, [location.pathname])
 
 
@@ -77,7 +78,7 @@ const SidebarComponent = ({isNoneMobile, drawerWidth, isOpen, setIsOpen}: any) =
                                 navMenu.map((element) => {
                                     return (
                                         <ListItem key={element.id} >
-                                            <ListItemButton className={classes.navItem} onClick={() => navigate(`${element.path}`)} >
+                                            <ListItemButton className={active === element.path ? `${classes.navItem} ${classes.active}` : classes.navItem} onClick={() => navigate(`${element.path}`)} >
                                                 <ListItemIcon>
                                                     {element.icon}
                                                 </ListItemIcon>
