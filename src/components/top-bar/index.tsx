@@ -4,7 +4,6 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SearchIcon from '@mui/icons-material/Search';
-import {useAppSelector} from "../../utils/hook";
 import {ColorModeContext} from "../../theme";
 import {useStyles} from "./styles";
 import FlexBetween from "../flex-between";
@@ -15,7 +14,6 @@ const TopBarComponent: React.FC<ITopBarProps> = ({isOpen, setIsOpen}: ITopBarPro
     const theme = useTheme()
     const colorMode: any = useContext(ColorModeContext)
     const classes = useStyles()
-    const user = useAppSelector((state) => state.auth.user)
 
 
     return (
@@ -25,7 +23,7 @@ const TopBarComponent: React.FC<ITopBarProps> = ({isOpen, setIsOpen}: ITopBarPro
                 <Grid>
                     <FlexBetween>
                         <MenuOutlined className={classes.menuIcon} onClick={() => setIsOpen(!isOpen)}/>
-                        <Typography>Welcome Alex</Typography>
+                        <Typography>Welcome {sessionStorage.getItem('name')}</Typography>
                     </FlexBetween>
 
                 </Grid>

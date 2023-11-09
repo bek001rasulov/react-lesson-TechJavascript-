@@ -33,6 +33,7 @@ export const tokens = (mode: string) => ({
         white: {
             DEFAULT: '#FFFFFF',
             100: '#F7F7F7',
+            200: '#D1D1D1',
         },
         gray: {
             DEFAULT: '#3C3C3C',

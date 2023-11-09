@@ -5,6 +5,9 @@ export const useAppDispatch: () => AppDispatch = useDispatch
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
 export const useAuth = () => {
-    const {isLogged} = useAppSelector((state) => state.auth)
-    return isLogged
+    if (sessionStorage.getItem('token')) {
+        return true
+    } else {
+        return false
+    }
 }

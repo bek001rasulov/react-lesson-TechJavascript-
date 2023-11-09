@@ -36,6 +36,7 @@ export const useStyles = makeStyles((theme: Theme) => {
                 borderRadius: '8px',
                 marginLeft: '28px',
                 backgroundColor: `${colors.primary[600]}`,
+                border: `1px solid ${colors.borderColor}`
             },
             searchIcon: {
                 '&:hover': {
