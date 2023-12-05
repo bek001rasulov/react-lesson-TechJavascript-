@@ -44,7 +44,7 @@ export const useStyles = makeStyles((theme: Theme) => {
                 }
             },
             searchInput: {
-                padding: '18px 12px',
+                padding: '8px',
             }
         }
 
