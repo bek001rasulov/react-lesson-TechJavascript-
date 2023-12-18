@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {useStyles} from "./styles";
 import {
     ChevronLeftOutlined,
-    ChevronRightOutlined,
     LogoutOutlined
 } from '@mui/icons-material';
 import {useLocation, useNavigate} from "react-router-dom";
