@@ -3,6 +3,7 @@ import {useAppDispatch, useAppSelector} from "../../utils/hook";
 import {getFavoriteAssets} from "../../store/thunks/assets";
 import {Box, Grid} from "@mui/material";
 import {useStyles} from "./styles";
+import {AreaChart} from "../../components/charts/area-chart";
 
 const Home = () => {
     const favoriteAssets: any[] = useAppSelector(state => state.assets.favoriteAssets)
@@ -11,7 +12,9 @@ const Home = () => {
     const classes = useStyles()
 
     const favoriteAssetName = useMemo(() => ['bitcoin', 'ethereum'], [])
-    const filteredArray = favoriteAssets.filter((value, index, self) => index === self.findIndex((t) => t.name === value.name))
+    const filteredArray = favoriteAssets.filter((value, index, self) => {
+         return index === self.findIndex((t) => t.name === value.name)
+    })
 
     const fetchData = useCallback((data: string[]) => {
         data.forEach((item) => {
@@ -40,13 +43,12 @@ const Home = () => {
 
                     </Grid>
                     <Grid item lg={6} md={6} xs={12}>
-                        <h5>Chart</h5>
+                        <AreaChart/>
                     </Grid>
                 </Grid>
             </Grid>
         )
     })
-
     return (
         <Box className={classes.root}>
             <Grid container spacing={2}>

@@ -26,7 +26,8 @@ export const useStyles = makeStyles((theme: Theme) => {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'flex-end',
-            paddingBottom: '20px'
+            paddingBottom: '35px',
+            height: '100%'
         },
         cardPrice: {
             fontSize: 32,

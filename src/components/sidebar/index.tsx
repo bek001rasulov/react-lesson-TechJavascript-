@@ -66,7 +66,7 @@ const SidebarComponent: React.FC<ISidebarProps> = ({isNoneMobile, drawerWidth, i
                                         Demo
                                     </Typography>
                                 </Box>
-                                {!isNoneMobile && (
+                                {isNoneMobile && (
                                     <IconButton onClick={() => setIsOpen(!isOpen)}>
                                         <ChevronLeftOutlined/>
                                     </IconButton>
