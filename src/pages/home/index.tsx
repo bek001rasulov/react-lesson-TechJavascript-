@@ -4,6 +4,8 @@ import {getFavoriteAssets} from "../../store/thunks/assets";
 import {Box, Grid} from "@mui/material";
 import {useStyles} from "./styles";
 import {AreaChart} from "../../components/charts/area-chart";
+import TrendUp from "../../assets/images/chart/trend-up.svg";
+import TrendDown from "../../assets/images/chart/trend-down.svg";
 
 const Home: FC = (): JSX.Element => {
     const favoriteAssets: any[] = useAppSelector(state => state.assets.favoriteAssets)
@@ -29,22 +31,26 @@ const Home: FC = (): JSX.Element => {
     }, [favoriteAssetName, fetchData])
 
     const renderFavoriteBlock = filteredArray.map((item: any) => {
-        console.log('ELEMENT', item)
-        const currentPrice = item.data.prices[0]
-        const currentCap = item.data.market_caps[0]
+
+        const currentPrice = item.singleAsset.map((item: any) => item.current_price)
+        const changePrice = item.singleAsset.map((item: any) => item.price_change_percentage_24h)
+
         return (
             <Grid item lg={6} md={6} xs={12} key={item.name}>
                 <Grid container className={classes.topCardItem}>
                     <Grid item lg={6} md={6} xs={12}>
                         <h3 className={classes.assetName}>{item.name}</h3>
                         <div className={classes.itemDetails}>
-                            <h3 className={classes.cardPrice}>${currentPrice[1].toFixed(2)}</h3>
-                            <p className={classes.cardCapitalize}>${currentCap[1].toFixed(0)}</p>
+                            <h3 className={classes.cardPrice}>${currentPrice}</h3>
+                            <p className={`${classes.priceTrend} ${changePrice > 0 ? classes.trendUp : classes.trendDown}`}>
+                                <img src={changePrice > 0 ? TrendUp : TrendDown} width={24} alt="trend"/>
+                                <span>{Number(changePrice).toFixed(2)}%</span>
+                            </p>
                         </div>
 
                     </Grid>
-                    <Grid item lg={6} md={6} xs={12}>
-                        <AreaChart data={item?.data?.prices}/>
+                    <Grid item lg={6} md={6} xs={12} className={classes.cardChart}>
+                        <AreaChart data={item?.data}/>
                     </Grid>
                 </Grid>
             </Grid>
