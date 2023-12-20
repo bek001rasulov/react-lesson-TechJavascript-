@@ -36,21 +36,21 @@ const SidebarComponent: React.FC<ISidebarProps> = ({isNoneMobile, drawerWidth, i
 
 
     return (
-        <Box component='nav'>
-            {isOpen && (
+
                 <Drawer
                     anchor='left'
                     open={isOpen}
                     onClose={() => setIsOpen(false)}
                     variant='persistent'
                     sx={{
-                        width: drawerWidth,
+                        width: isOpen ? drawerWidth : 0,
                         '& .MuiDrawer-paper': {
                             color: theme.palette.secondary.main,
                             backgroundColor: theme.palette.primary.main,
                             boxSizing: 'border-box',
-                            width: drawerWidth
-                        }
+                            width: isOpen ? drawerWidth : 0
+                        },
+                        transition: 'all 0.225s'
                     }}
                 >
                     <Box className={classes.navBlock}>
@@ -106,8 +106,7 @@ const SidebarComponent: React.FC<ISidebarProps> = ({isNoneMobile, drawerWidth, i
                         </List>
                     </Box>
                 </Drawer>
-            )}
-        </Box>
+
     );
 };
 
