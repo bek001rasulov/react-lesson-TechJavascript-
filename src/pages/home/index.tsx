@@ -7,9 +7,10 @@ import {AreaChart} from "../../components/charts/area-chart";
 import TrendUp from "../../assets/images/chart/trend-up.svg";
 import TrendDown from "../../assets/images/chart/trend-down.svg";
 import {LineChart} from "../../components/charts/line-chart";
+import {IChartData, ISingleAsset} from "../../common/types/assets";
 
 const Home: FC = (): JSX.Element => {
-    const favoriteAssets: any[] = useAppSelector(state => state.assets.favoriteAssets)
+    const favoriteAssets: IChartData[] = useAppSelector(state => state.assets.favoriteAssets)
     const dispatch = useAppDispatch()
     const fetchDataRef = useRef(false)
     const classes = useStyles()
@@ -31,10 +32,10 @@ const Home: FC = (): JSX.Element => {
         fetchData(favoriteAssetName)
     }, [favoriteAssetName, fetchData])
 
-    const renderFavoriteBlock = filteredArray.map((item: any) => {
+    const renderFavoriteBlock = filteredArray.map((item: IChartData) => {
 
-        const currentPrice = item.singleAsset.map((item: any) => item.current_price)
-        const changePrice = item.singleAsset.map((item: any) => item.price_change_percentage_24h)
+        const currentPrice: any = item.singleAsset.map((item: ISingleAsset) => item.current_price)
+        const changePrice: any = item.singleAsset.map((item: ISingleAsset) => item.price_change_percentage_24h)
 
         return (
             <Grid item lg={6} md={6} xs={12} key={item.name}>
